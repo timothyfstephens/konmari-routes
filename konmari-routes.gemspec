@@ -11,7 +11,12 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{Only keep the routes that make you happy}
   spec.description   = %q{
-    Inspired by thousand-line routes files
+    Inspired by thousand-line routes files, this gem aims to make those more manageable by enabling
+    a routing structure that mirrors the file structure of a standard application.
+
+    This is largely inspired by two articles:
+      https://blog.lelonek.me/keep-your-rails-routes-clean-and-organized-83e78f2c11f2
+      https://blog.arkency.com/2015/02/how-to-split-routes-dot-rb-into-smaller-parts/
   }
   spec.homepage      = "TODO: Put your gem's website or public repo URL here."
   spec.license       = "MIT"
