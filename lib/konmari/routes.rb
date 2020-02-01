@@ -1,9 +1,11 @@
 require "konmari/routes/version"
+require "konmari/routes/loader"
+require "konmari/routes/configuration"
 
 module Konmari
   module Routes
-    def config
-      Loader.new(yield Configuration.new).build_routes if block_given?
+    def self.config
+      Loader.new(Configuration.new.tap { |config| yield config}).build_routes if block_given?
     end
   end
 end

@@ -6,11 +6,11 @@ module Konmari
                     :logger
 
       def logger
-        @logger || (const_defined?(Rails) ? Rails.logger : nil)
+        @logger || (Object.const_defined?(:Rails) ? Rails.logger : nil)
       end
 
       def application
-        @application || (const_defined?(Rails) ? Rails.application : nil)
+        @application || (Object.const_defined?(:Rails) ? Rails.application : nil)
       end
     end
   end

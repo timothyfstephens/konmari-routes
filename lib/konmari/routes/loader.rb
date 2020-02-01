@@ -37,10 +37,10 @@ module Konmari
       def load_routes(router)
         @router = router
 
-        return unless @routes_folder.exist?
+        return unless @routes_folder&.exist?
 
         sorted_children(@routes_folder).each do |path|
-          @logger.debug "Processing #{path}"
+          debug "Processing #{path}"
           handle_path(path)
         end
       end
@@ -50,7 +50,7 @@ module Konmari
           # if its a directory, use the directory name as the namespace
 
           ns = base_path.basename.to_s.to_sym
-          @logger.debug "Adding namespace :#{ns}"
+          debug "Adding namespace :#{ns}"
           @router.namespace ns do
             sorted_children(base_path).each do |path|
               handle_path path
@@ -68,7 +68,7 @@ module Konmari
         # Otherwise, get first line that is not a comment
         # or blank, and validate that this file is appropriately named
         unless priority_regex.match(path.basename.to_s)
-          first_code_line = routes.split("\n").detect { |l| l.present? && !/^\s*#/.match(l) }
+          first_code_line = routes.split("\n").detect { |l| !l.empty? && !/^\s*#/.match(l) }
 
           expected_filename = EXPECTED_FILENAME_REGEX.match(first_code_line)
 
@@ -77,7 +77,7 @@ module Konmari
           end
         end
 
-        @logger.debug "Loaded routes from #{path}"
+        debug "Loaded routes from #{path}"
 
         @router.instance_eval routes
       end
@@ -85,7 +85,7 @@ module Konmari
       def sorted_children(folder_path)
         folder_path.children.sort_by do |path|
           if priority_regex =~ path.basename.to_s
-            file_index = PRIORITY_FILES.index { |file_name| path.basename.to_s.starts_with?(file_name.to_s) }
+            file_index = PRIORITY_FILES.index { |file_name| path.basename.to_s.start_with?(file_name.to_s) }
             "a_#{file_index}_#{path.basename}"
           elsif path.directory?
             "dir_#{path.basename}"
@@ -99,6 +99,10 @@ module Konmari
         @priority_regex ||= /^(#{PRIORITY_FILES.join("|")})\.routes$/
       end
 
+      def debug(message)
+        return unless @logger.respond_to?(:debug)
+        @logger.debug message
+      end
     end
 
     class FilenameError < StandardError; end
