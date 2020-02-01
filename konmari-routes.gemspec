@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
       https://blog.lelonek.me/keep-your-rails-routes-clean-and-organized-83e78f2c11f2
       https://blog.arkency.com/2015/02/how-to-split-routes-dot-rb-into-smaller-parts/
   }
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.homepage      = "https://github.com/timothyfstephens/konmari-routes"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
