@@ -1,5 +1,5 @@
 module Konmari
   module Routes
-    VERSION = "0.1.1-docs"
+    VERSION = "0.1.2"
   end
 end
