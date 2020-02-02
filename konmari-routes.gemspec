@@ -11,12 +11,15 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{Only keep the routes that make you happy}
   spec.description   = %q{
-    Inspired by thousand-line routes files, this gem aims to make those more manageable by enabling
-    a routing structure that mirrors the file structure of a standard application.
+    Inspired by thousand-line routes files, KonmariRoutes aims to make routes more manageable by enabling a routing structure that mirrors the controller file structure of a standard web application, powered by one guiding principle:<br>
 
-    This is largely inspired by two articles:
-      https://blog.lelonek.me/keep-your-rails-routes-clean-and-organized-83e78f2c11f2
-      https://blog.arkency.com/2015/02/how-to-split-routes-dot-rb-into-smaller-parts/
+    Keep only what makes you happy.<br>
+
+    This is largely inspired by two articles:<br>
+      <ul>
+        <li><a href="https://blog.lelonek.me/keep-your-rails-routes-clean-and-organized-83e78f2c11f2" target="_blank">Keep your rails routes clean and organized</a></li>
+        <li><a href="https://blog.arkency.com/2015/02/how-to-split-routes-dot-rb-into-smaller-parts/" target="_blank">How to split routes.rb into smaller parts</a></li>
+      </ul>
   }
   spec.homepage      = "https://github.com/timothyfstephens/konmari-routes"
   spec.license       = "MIT"
