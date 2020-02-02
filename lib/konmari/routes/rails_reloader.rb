@@ -1,5 +1,15 @@
 module Konmari
   module Routes
+    # When using Rails, any changes to +config/routes.rb+ are detected by the server when developing and automatically reloaded.
+    #
+    # In order to mimic this behavior, add {Konmari::Routes::RailsReloader} as middleware in your +development.rb+ file:
+    #
+    #    Rails.application.configure do
+    #      config.middleware.use Konmari::Routes::RailsReloader
+    #
+    #      ...
+    #    end
+    #
     class RailsReloader
       def initialize(app)
         @app = app
