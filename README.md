@@ -1,5 +1,7 @@
 # Konmari::Routes
 
+![Tests](https://github.com/timothyfstephens/konmari-routes/workflows/Tests/badge.svg)
+
 Inspired by thousand-line routes files, KonmariRoutes aims to make routes more manageable by enabling
 a routing structure that mirrors the controller file structure of a standard web application, powered by one guiding principle:
 

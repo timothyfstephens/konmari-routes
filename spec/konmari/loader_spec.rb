@@ -2,6 +2,10 @@ RSpec.describe Konmari::Routes::Loader do
   let(:route_loader) { described_class.new(Konmari::Routes::Configuration.new.tap { |c| c.routes_path = routes_folder}) }
   let(:routes_folder) { Pathname.new(`pwd`.strip) }
 
+  before do
+    allow_any_instance_of(described_class).to receive(:build_routes)
+  end
+
   describe "#sorted_childen" do
     let(:folder_path) { Pathname.new("config/routes_spec") }
     let(:children)    { [] }
@@ -257,18 +261,21 @@ RSpec.describe Konmari::Routes::Loader do
 
   describe ".build_routes" do
     let(:app)          { double("RailsApplication") }
-    let(:route_loader) do
+
+    subject do
       described_class.new(Konmari::Routes::Configuration.new.tap do |c|
         c.routes_path = routes_folder
         c.application = app
       end)
     end
 
-    subject { route_loader.build_routes }
+    before do
+      allow_any_instance_of(described_class).to receive(:build_routes).and_call_original
+    end
 
     it "calls load_routes" do
       allow(app).to receive_message_chain(:routes, :draw).and_yield
-      expect(route_loader).to receive(:load_routes)
+      expect_any_instance_of(described_class).to receive(:load_routes)
       subject
     end
   end
