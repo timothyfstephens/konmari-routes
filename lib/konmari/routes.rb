@@ -1,5 +1,6 @@
 require "konmari/routes/version"
 require "konmari/routes/loader"
+require "konmari/routes/rails_reloader"
 require "konmari/routes/configuration"
 
 module Konmari
